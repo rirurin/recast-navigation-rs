@@ -1,0 +1,15 @@
+[package]
+name = "recast-nav-atl"
+version.workspace = true
+authors.workspace = true
+categories.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license-file.workspace = true
+edition.workspace = true
+
+[dependencies]
+allocator-api2 = "0.2.21"
+bitflags = "2.9.1"
+glam = "0.30.3"
+recast-nav-atl-sys = { path = "../recast-nav-atl-sys" }

@@ -1,0 +1,3 @@
+[submodule "include/recastnavigation"]
+	path = include/recastnavigation
+	url = https://github.com/rirurin/recastnavigation.git

@@ -1,0 +1,21 @@
+# Rust build files
+/target
+/Cargo.lock
+/*/target
+/*/Cargo.lock
+
+# C# Visual Studio projects (common)
+.vs/
+/*.*/obj
+/*.*/riri_hook
+
+/*/incl/
+/*/middata/
+*.g.cs
+
+# Script output
+/scripts/*.txt
+/scripts/__pycache__
+
+# Jetbrains IDE
+.idea/
