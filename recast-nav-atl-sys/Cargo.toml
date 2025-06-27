@@ -12,3 +12,5 @@ edition.workspace = true
 
 [build-dependencies]
 bindgen = "0.72"
+cc = "1.2.22"
+walkdir = "2.5.0"
