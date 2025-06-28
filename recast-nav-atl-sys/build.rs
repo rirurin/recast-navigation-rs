@@ -48,9 +48,6 @@ fn main() {
     source_files.extend(get_source_files_in_directory(native_dir.join("Detour").join("Source").as_path()));
     source_files.extend(get_source_files_in_directory(native_dir.join("DetourCrowd").join("Source").as_path()));
     source_files.extend(get_source_files_in_directory(native_dir.join("DetourTileCache").join("Source").as_path()));
-    for s in &source_files {
-        println!("{}", s);
-    }
     builder.files(source_files);
 
     builder.includes([

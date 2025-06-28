@@ -32,6 +32,10 @@ impl From<&mut dtQueryFilter> for &QueryFilter {
     fn from(value: &mut dtQueryFilter) -> Self { unsafe { std::mem::transmute(value) } }
 }
 
+impl QueryFilter {
+    pub fn new() -> Self { Self(unsafe { dtQueryFilter::new() }) }
+}
+
 pub struct Crowd(pub(crate) dtCrowd);
 
 impl From<&dtCrowd> for &Crowd {

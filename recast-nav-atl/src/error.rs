@@ -6,6 +6,7 @@ use recast_nav_atl_sys::bindings::root::{
 };
 
 bitflags! {
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
     pub struct Error : u32 {
         const DT_WRONG_MAGIC = 1 << 0;		// Input data is not recognized.
         const DT_WRONG_VERSION = 1 << 1;	// Input data is in wrong version.
