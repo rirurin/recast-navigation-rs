@@ -34,6 +34,40 @@ impl From<&mut dtQueryFilter> for &QueryFilter {
 
 impl QueryFilter {
     pub fn new() -> Self { Self(unsafe { dtQueryFilter::new() }) }
+
+    /// `dtQueryFilter::getAreaCost`
+    /// 
+    /// Returns the traversal cost of the area.
+    pub fn get_area_cost(&self, index: usize) -> f32 { self.0.m_areaCost[index] }
+
+    /// `dtQueryFilter::setAreaCost`
+    /// 
+    /// Sets the traversal cost of the area.
+    pub fn set_area_cost(&mut self, index: usize, cost: f32) { self.0.m_areaCost[index] = cost }
+
+    /// `dtQueryFilter::getIncludeFlags`
+    /// 
+    /// Returns the include flags for the filter.
+	/// Any polygons that include one or more of these flags will be
+	/// included in the operation.
+    pub fn get_include_flags(&self) -> u16 { self.0.m_includeFlags }
+
+    /// `dtQueryFilter::setIncludeFlags`
+    /// 
+    /// Sets the include flags for the filter.
+    pub fn set_include_flags(&mut self, value: u16) { self.0.m_includeFlags = value }
+
+    /// `dtQueryFilter::getExcludeFlags`
+    /// 
+    /// Returns the exclude flags for the filter.
+	/// Any polygons that exclude one or more of these flags will be
+	/// excluded in the operation.
+    pub fn get_exclude_flags(&self) -> u16 { self.0.m_excludeFlags }
+
+    /// `dtQueryFilter::setExcludeFlags`
+    /// 
+    /// Sets the exclude flags for the filter.
+    pub fn set_exclude_flags(&mut self, value: u16) { self.0.m_excludeFlags = value }
 }
 
 pub struct Crowd(pub(crate) dtCrowd);
@@ -49,6 +83,8 @@ impl From<&mut dtCrowd> for &mut Crowd {
 impl From<&mut dtCrowd> for &Crowd {
     fn from(value: &mut dtCrowd) -> Self { unsafe { std::mem::transmute(value) } }
 }
+
+pub const MAX_AGENTS: usize = 0x200;
 
 impl Crowd {
 
@@ -68,7 +104,7 @@ impl Crowd {
         unsafe { self.0.setObstacleAvoidanceParams(index as i32, params) }
     }
 
-    /// `dtCrowd::getObstacleAvoidanceParams`
+    /// `dtCrowd::getObstacleAvoidanceParams`X_AGENT
     /// 
     /// Gets the shared avoidance configuration for the specified index.
     /// Returns the requested configuration

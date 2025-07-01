@@ -4,6 +4,10 @@ use recast_nav_atl_sys::bindings::root::{
     DT_FAILURE,
     DT_STATUS_DETAIL_MASK
 };
+use std::{
+    error::Error as ErrorStd,
+    fmt::Display
+};
 
 bitflags! {
     #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
@@ -26,5 +30,19 @@ impl Error {
         } else {
             None
         }
+    }
+}
+
+impl From<Error> for dtStatus {
+    fn from(value: Error) -> Self {
+        value.bits()
+    }
+}
+
+impl ErrorStd for Error {}
+
+impl Display for Error {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Recast Error: {:?}", *self)
     }
 }

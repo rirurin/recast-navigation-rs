@@ -24,8 +24,10 @@ fn main() {
     let bindings = builder()
         .headers([
             native_dir.join("Detour").join("Include").join("DetourNavMesh.h").to_str().unwrap(),
+            native_dir.join("Detour").join("Include").join("DetourNavMeshBuilder.h").to_str().unwrap(),
             native_dir.join("DetourCrowd").join("Include").join("DetourCrowd.h").to_str().unwrap(),
             native_dir.join("DetourTileCache").join("Include").join("DetourTileCache.h").to_str().unwrap(),
+            native_dir.join("RecastDemo").join("Include").join("ChunkyTriMesh.h").to_str().unwrap(),
         ])
         
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
@@ -48,12 +50,14 @@ fn main() {
     source_files.extend(get_source_files_in_directory(native_dir.join("Detour").join("Source").as_path()));
     source_files.extend(get_source_files_in_directory(native_dir.join("DetourCrowd").join("Source").as_path()));
     source_files.extend(get_source_files_in_directory(native_dir.join("DetourTileCache").join("Source").as_path()));
+    source_files.push(native_dir.join("RecastDemo").join("Source").join("ChunkyTriMesh.cpp").to_str().unwrap().to_owned());
     builder.files(source_files);
 
     builder.includes([
         native_dir.join("Detour").join("Include").to_str().unwrap(),
         native_dir.join("DetourCrowd").join("Include").to_str().unwrap(),
         native_dir.join("DetourTileCache").join("Include").to_str().unwrap(),
+        native_dir.join("RecastDemo").join("Include").to_str().unwrap(),
     ]);
 
     builder.define("SOVERSION", "1");

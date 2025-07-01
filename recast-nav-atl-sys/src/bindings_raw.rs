@@ -946,6 +946,167 @@ pub mod root {
         #[link_name = "\u{1}?dtFreeNavMesh@@YAXPEAVdtNavMesh@@@Z"]
         pub fn dtFreeNavMesh(navmesh: *mut root::dtNavMesh);
     }
+    #[doc = " Represents the source data used to build an navigation mesh tile.\n @ingroup detour"]
+    #[repr(C)]
+    #[derive(Debug, Copy, Clone)]
+    pub struct dtNavMeshCreateParams {
+        #[doc = "< The polygon mesh vertices. [(x, y, z) * #vertCount] [Unit: vx]"]
+        pub verts: *const ::std::os::raw::c_ushort,
+        #[doc = "< The number vertices in the polygon mesh. [Limit: >= 3]"]
+        pub vertCount: ::std::os::raw::c_int,
+        #[doc = "< The polygon data. [Size: #polyCount * 2 * #nvp]"]
+        pub polys: *const ::std::os::raw::c_ushort,
+        #[doc = "< The user defined flags assigned to each polygon. [Size: #polyCount]"]
+        pub polyFlags: *const ::std::os::raw::c_ushort,
+        #[doc = "< The user defined area ids assigned to each polygon. [Size: #polyCount]"]
+        pub polyAreas: *const ::std::os::raw::c_uchar,
+        #[doc = "< Number of polygons in the mesh. [Limit: >= 1]"]
+        pub polyCount: ::std::os::raw::c_int,
+        #[doc = "< Number maximum number of vertices per polygon. [Limit: >= 3]"]
+        pub nvp: ::std::os::raw::c_int,
+        #[doc = "< The height detail sub-mesh data. [Size: 4 * #polyCount]"]
+        pub detailMeshes: *const ::std::os::raw::c_uint,
+        #[doc = "< The detail mesh vertices. [Size: 3 * #detailVertsCount] [Unit: wu]"]
+        pub detailVerts: *const f32,
+        #[doc = "< The number of vertices in the detail mesh."]
+        pub detailVertsCount: ::std::os::raw::c_int,
+        #[doc = "< The detail mesh triangles. [Size: 4 * #detailTriCount]"]
+        pub detailTris: *const ::std::os::raw::c_uchar,
+        #[doc = "< The number of triangles in the detail mesh."]
+        pub detailTriCount: ::std::os::raw::c_int,
+        #[doc = " Off-mesh connection vertices. [(ax, ay, az, bx, by, bz) * #offMeshConCount] [Unit: wu]"]
+        pub offMeshConVerts: *const f32,
+        #[doc = " Off-mesh connection radii. [Size: #offMeshConCount] [Unit: wu]"]
+        pub offMeshConRad: *const f32,
+        #[doc = " User defined flags assigned to the off-mesh connections. [Size: #offMeshConCount]"]
+        pub offMeshConFlags: *const ::std::os::raw::c_ushort,
+        #[doc = " User defined area ids assigned to the off-mesh connections. [Size: #offMeshConCount]"]
+        pub offMeshConAreas: *const ::std::os::raw::c_uchar,
+        #[doc = " The permitted travel direction of the off-mesh connections. [Size: #offMeshConCount]\n\n 0 = Travel only from endpoint A to endpoint B.<br/>\n #DT_OFFMESH_CON_BIDIR = Bidirectional travel."]
+        pub offMeshConDir: *const ::std::os::raw::c_uchar,
+        #[doc = " The user defined ids of the off-mesh connection. [Size: #offMeshConCount]"]
+        pub offMeshConUserID: *const ::std::os::raw::c_uint,
+        #[doc = " The number of off-mesh connections. [Limit: >= 0]"]
+        pub offMeshConCount: ::std::os::raw::c_int,
+        #[doc = "< The user defined id of the tile."]
+        pub userId: ::std::os::raw::c_uint,
+        #[doc = "< The tile's x-grid location within the multi-tile destination mesh. (Along the x-axis.)"]
+        pub tileX: ::std::os::raw::c_int,
+        #[doc = "< The tile's y-grid location within the multi-tile destination mesh. (Along the z-axis.)"]
+        pub tileY: ::std::os::raw::c_int,
+        #[doc = "< The tile's layer within the layered destination mesh. [Limit: >= 0] (Along the y-axis.)"]
+        pub tileLayer: ::std::os::raw::c_int,
+        #[doc = "< The minimum bounds of the tile. [(x, y, z)] [Unit: wu]"]
+        pub bmin: [f32; 3usize],
+        #[doc = "< The maximum bounds of the tile. [(x, y, z)] [Unit: wu]"]
+        pub bmax: [f32; 3usize],
+        #[doc = "< The agent height. [Unit: wu]"]
+        pub walkableHeight: f32,
+        #[doc = "< The agent radius. [Unit: wu]"]
+        pub walkableRadius: f32,
+        #[doc = "< The agent maximum traversable ledge. (Up/Down) [Unit: wu]"]
+        pub walkableClimb: f32,
+        #[doc = "< The xz-plane cell size of the polygon mesh. [Limit: > 0] [Unit: wu]"]
+        pub cs: f32,
+        #[doc = "< The y-axis cell height of the polygon mesh. [Limit: > 0] [Unit: wu]"]
+        pub ch: f32,
+        #[doc = " True if a bounding volume tree should be built for the tile.\n @note The BVTree is not normally needed for layered navigation meshes."]
+        pub buildBvTree: bool,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of dtNavMeshCreateParams"]
+            [::std::mem::size_of::<dtNavMeshCreateParams>() - 208usize];
+        ["Alignment of dtNavMeshCreateParams"]
+            [::std::mem::align_of::<dtNavMeshCreateParams>() - 8usize];
+        ["Offset of field: dtNavMeshCreateParams::verts"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, verts) - 0usize];
+        ["Offset of field: dtNavMeshCreateParams::vertCount"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, vertCount) - 8usize];
+        ["Offset of field: dtNavMeshCreateParams::polys"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, polys) - 16usize];
+        ["Offset of field: dtNavMeshCreateParams::polyFlags"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, polyFlags) - 24usize];
+        ["Offset of field: dtNavMeshCreateParams::polyAreas"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, polyAreas) - 32usize];
+        ["Offset of field: dtNavMeshCreateParams::polyCount"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, polyCount) - 40usize];
+        ["Offset of field: dtNavMeshCreateParams::nvp"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, nvp) - 44usize];
+        ["Offset of field: dtNavMeshCreateParams::detailMeshes"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, detailMeshes) - 48usize];
+        ["Offset of field: dtNavMeshCreateParams::detailVerts"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, detailVerts) - 56usize];
+        ["Offset of field: dtNavMeshCreateParams::detailVertsCount"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, detailVertsCount) - 64usize];
+        ["Offset of field: dtNavMeshCreateParams::detailTris"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, detailTris) - 72usize];
+        ["Offset of field: dtNavMeshCreateParams::detailTriCount"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, detailTriCount) - 80usize];
+        ["Offset of field: dtNavMeshCreateParams::offMeshConVerts"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, offMeshConVerts) - 88usize];
+        ["Offset of field: dtNavMeshCreateParams::offMeshConRad"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, offMeshConRad) - 96usize];
+        ["Offset of field: dtNavMeshCreateParams::offMeshConFlags"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, offMeshConFlags) - 104usize];
+        ["Offset of field: dtNavMeshCreateParams::offMeshConAreas"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, offMeshConAreas) - 112usize];
+        ["Offset of field: dtNavMeshCreateParams::offMeshConDir"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, offMeshConDir) - 120usize];
+        ["Offset of field: dtNavMeshCreateParams::offMeshConUserID"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, offMeshConUserID) - 128usize];
+        ["Offset of field: dtNavMeshCreateParams::offMeshConCount"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, offMeshConCount) - 136usize];
+        ["Offset of field: dtNavMeshCreateParams::userId"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, userId) - 140usize];
+        ["Offset of field: dtNavMeshCreateParams::tileX"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, tileX) - 144usize];
+        ["Offset of field: dtNavMeshCreateParams::tileY"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, tileY) - 148usize];
+        ["Offset of field: dtNavMeshCreateParams::tileLayer"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, tileLayer) - 152usize];
+        ["Offset of field: dtNavMeshCreateParams::bmin"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, bmin) - 156usize];
+        ["Offset of field: dtNavMeshCreateParams::bmax"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, bmax) - 168usize];
+        ["Offset of field: dtNavMeshCreateParams::walkableHeight"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, walkableHeight) - 180usize];
+        ["Offset of field: dtNavMeshCreateParams::walkableRadius"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, walkableRadius) - 184usize];
+        ["Offset of field: dtNavMeshCreateParams::walkableClimb"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, walkableClimb) - 188usize];
+        ["Offset of field: dtNavMeshCreateParams::cs"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, cs) - 192usize];
+        ["Offset of field: dtNavMeshCreateParams::ch"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, ch) - 196usize];
+        ["Offset of field: dtNavMeshCreateParams::buildBvTree"]
+            [::std::mem::offset_of!(dtNavMeshCreateParams, buildBvTree) - 200usize];
+    };
+    unsafe extern "C" {
+        #[doc = " Builds navigation mesh tile data from the provided tile creation data.\n @ingroup detour\n  @param[in]\t\tparams\t\tTile creation data.\n  @param[out]\toutData\t\tThe resulting tile data.\n  @param[out]\toutDataSize\tThe size of the tile data array.\n @return True if the tile data was successfully created."]
+        #[link_name = "\u{1}?dtCreateNavMeshData@@YA_NPEAUdtNavMeshCreateParams@@PEAPEAEPEAH@Z"]
+        pub fn dtCreateNavMeshData(
+            params: *mut root::dtNavMeshCreateParams,
+            outData: *mut *mut ::std::os::raw::c_uchar,
+            outDataSize: *mut ::std::os::raw::c_int,
+        ) -> bool;
+    }
+    unsafe extern "C" {
+        #[doc = " Swaps the endianness of the tile data's header (#dtMeshHeader).\n  @param[in,out]\tdata\t\tThe tile data array.\n  @param[in]\t\tdataSize\tThe size of the data array."]
+        #[link_name = "\u{1}?dtNavMeshHeaderSwapEndian@@YA_NPEAEH@Z"]
+        pub fn dtNavMeshHeaderSwapEndian(
+            data: *mut ::std::os::raw::c_uchar,
+            dataSize: ::std::os::raw::c_int,
+        ) -> bool;
+    }
+    unsafe extern "C" {
+        #[doc = " Swaps endianness of the tile data.\n  @param[in,out]\tdata\t\tThe tile data array.\n  @param[in]\t\tdataSize\tThe size of the data array."]
+        #[link_name = "\u{1}?dtNavMeshDataSwapEndian@@YA_NPEAEH@Z"]
+        pub fn dtNavMeshDataSwapEndian(
+            data: *mut ::std::os::raw::c_uchar,
+            dataSize: ::std::os::raw::c_int,
+        ) -> bool;
+    }
     #[doc = " Defines polygon filtering and traversal costs for navigation mesh query operations.\n @ingroup detour"]
     #[repr(C)]
     #[derive(Debug, Copy, Clone)]
@@ -4338,6 +4499,85 @@ pub mod root {
         #[link_name = "\u{1}?dtFreeTileCache@@YAXPEAVdtTileCache@@@Z"]
         pub fn dtFreeTileCache(tc: *mut root::dtTileCache);
     }
+    #[repr(C)]
+    #[derive(Debug, Copy, Clone)]
+    pub struct rcChunkyTriMeshNode {
+        pub bmin: [f32; 2usize],
+        pub bmax: [f32; 2usize],
+        pub i: ::std::os::raw::c_int,
+        pub n: ::std::os::raw::c_int,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of rcChunkyTriMeshNode"][::std::mem::size_of::<rcChunkyTriMeshNode>() - 24usize];
+        ["Alignment of rcChunkyTriMeshNode"]
+            [::std::mem::align_of::<rcChunkyTriMeshNode>() - 4usize];
+        ["Offset of field: rcChunkyTriMeshNode::bmin"]
+            [::std::mem::offset_of!(rcChunkyTriMeshNode, bmin) - 0usize];
+        ["Offset of field: rcChunkyTriMeshNode::bmax"]
+            [::std::mem::offset_of!(rcChunkyTriMeshNode, bmax) - 8usize];
+        ["Offset of field: rcChunkyTriMeshNode::i"]
+            [::std::mem::offset_of!(rcChunkyTriMeshNode, i) - 16usize];
+        ["Offset of field: rcChunkyTriMeshNode::n"]
+            [::std::mem::offset_of!(rcChunkyTriMeshNode, n) - 20usize];
+    };
+    #[repr(C)]
+    #[derive(Debug)]
+    pub struct rcChunkyTriMesh {
+        pub nodes: *mut root::rcChunkyTriMeshNode,
+        pub nnodes: ::std::os::raw::c_int,
+        pub tris: *mut ::std::os::raw::c_int,
+        pub ntris: ::std::os::raw::c_int,
+        pub maxTrisPerChunk: ::std::os::raw::c_int,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of rcChunkyTriMesh"][::std::mem::size_of::<rcChunkyTriMesh>() - 32usize];
+        ["Alignment of rcChunkyTriMesh"][::std::mem::align_of::<rcChunkyTriMesh>() - 8usize];
+        ["Offset of field: rcChunkyTriMesh::nodes"]
+            [::std::mem::offset_of!(rcChunkyTriMesh, nodes) - 0usize];
+        ["Offset of field: rcChunkyTriMesh::nnodes"]
+            [::std::mem::offset_of!(rcChunkyTriMesh, nnodes) - 8usize];
+        ["Offset of field: rcChunkyTriMesh::tris"]
+            [::std::mem::offset_of!(rcChunkyTriMesh, tris) - 16usize];
+        ["Offset of field: rcChunkyTriMesh::ntris"]
+            [::std::mem::offset_of!(rcChunkyTriMesh, ntris) - 24usize];
+        ["Offset of field: rcChunkyTriMesh::maxTrisPerChunk"]
+            [::std::mem::offset_of!(rcChunkyTriMesh, maxTrisPerChunk) - 28usize];
+    };
+    unsafe extern "C" {
+        #[doc = " Creates partitioned triangle mesh (AABB tree),\n where each node contains at max trisPerChunk triangles."]
+        #[link_name = "\u{1}?rcCreateChunkyTriMesh@@YA_NPEBMPEBHHHPEAUrcChunkyTriMesh@@@Z"]
+        pub fn rcCreateChunkyTriMesh(
+            verts: *const f32,
+            tris: *const ::std::os::raw::c_int,
+            ntris: ::std::os::raw::c_int,
+            trisPerChunk: ::std::os::raw::c_int,
+            cm: *mut root::rcChunkyTriMesh,
+        ) -> bool;
+    }
+    unsafe extern "C" {
+        #[doc = " Returns the chunk indices which overlap the input rectable."]
+        #[link_name = "\u{1}?rcGetChunksOverlappingRect@@YAHPEBUrcChunkyTriMesh@@QEAM1PEAHH@Z"]
+        pub fn rcGetChunksOverlappingRect(
+            cm: *const root::rcChunkyTriMesh,
+            bmin: *mut f32,
+            bmax: *mut f32,
+            ids: *mut ::std::os::raw::c_int,
+            maxIds: ::std::os::raw::c_int,
+        ) -> ::std::os::raw::c_int;
+    }
+    unsafe extern "C" {
+        #[doc = " Returns the chunk indices which overlap the input segment."]
+        #[link_name = "\u{1}?rcGetChunksOverlappingSegment@@YAHPEBUrcChunkyTriMesh@@QEAM1PEAHH@Z"]
+        pub fn rcGetChunksOverlappingSegment(
+            cm: *const root::rcChunkyTriMesh,
+            p: *mut f32,
+            q: *mut f32,
+            ids: *mut ::std::os::raw::c_int,
+            maxIds: ::std::os::raw::c_int,
+        ) -> ::std::os::raw::c_int;
+    }
     #[doc = " Gets the node pool.\n @returns The node pool."]
     #[repr(C)]
     #[derive(Debug, Copy, Clone)]
@@ -4359,11 +4599,6 @@ pub mod root {
     #[derive(Debug, Copy, Clone)]
     pub struct dtTileCacheLayerHeader {
         pub _address: u8,
-    }
-    #[repr(C)]
-    #[derive(Debug, Copy, Clone)]
-    pub struct dtNavMeshCreateParams {
-        _unused: [u8; 0],
     }
     #[repr(C)]
     #[derive(Debug, Copy, Clone)]
