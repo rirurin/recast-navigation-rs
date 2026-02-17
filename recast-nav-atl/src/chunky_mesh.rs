@@ -32,7 +32,7 @@ impl ChunkyTriMesh {
             recast_nav_atl_sys::bindings::root::rcCreateChunkyTriMesh(
                 verts.as_ptr() as *const f32, 
                 tris.as_ptr() as *const i32,
-                tris.len() as i32, 
+                tris.len() as i32 / 3, 
                 tris_per_chunk as i32,
                 &raw mut out.assume_init_mut().0
             );

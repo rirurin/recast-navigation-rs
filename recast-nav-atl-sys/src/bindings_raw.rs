@@ -4499,6 +4499,342 @@ pub mod root {
         #[link_name = "\u{1}?dtFreeTileCache@@YAXPEAVdtTileCache@@@Z"]
         pub fn dtFreeTileCache(tc: *mut root::dtTileCache);
     }
+    #[doc = "< 'DTLR';"]
+    pub const DT_TILECACHE_MAGIC: ::std::os::raw::c_int = 1146375250;
+    pub const DT_TILECACHE_VERSION: ::std::os::raw::c_int = 1;
+    pub const DT_TILECACHE_NULL_AREA: ::std::os::raw::c_uchar = 0;
+    pub const DT_TILECACHE_WALKABLE_AREA: ::std::os::raw::c_uchar = 63;
+    pub const DT_TILECACHE_NULL_IDX: ::std::os::raw::c_ushort = 65535;
+    #[repr(C)]
+    #[derive(Debug, Copy, Clone)]
+    pub struct dtTileCacheLayerHeader {
+        #[doc = "< Data magic"]
+        pub magic: ::std::os::raw::c_int,
+        #[doc = "< Data version"]
+        pub version: ::std::os::raw::c_int,
+        pub tx: ::std::os::raw::c_int,
+        pub ty: ::std::os::raw::c_int,
+        pub tlayer: ::std::os::raw::c_int,
+        pub bmin: [f32; 3usize],
+        pub bmax: [f32; 3usize],
+        #[doc = "< Height min/max range"]
+        pub hmin: ::std::os::raw::c_ushort,
+        #[doc = "< Height min/max range"]
+        pub hmax: ::std::os::raw::c_ushort,
+        #[doc = "< Dimension of the layer."]
+        pub width: ::std::os::raw::c_uchar,
+        #[doc = "< Dimension of the layer."]
+        pub height: ::std::os::raw::c_uchar,
+        #[doc = "< Usable sub-region."]
+        pub minx: ::std::os::raw::c_uchar,
+        #[doc = "< Usable sub-region."]
+        pub maxx: ::std::os::raw::c_uchar,
+        #[doc = "< Usable sub-region."]
+        pub miny: ::std::os::raw::c_uchar,
+        #[doc = "< Usable sub-region."]
+        pub maxy: ::std::os::raw::c_uchar,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of dtTileCacheLayerHeader"]
+            [::std::mem::size_of::<dtTileCacheLayerHeader>() - 56usize];
+        ["Alignment of dtTileCacheLayerHeader"]
+            [::std::mem::align_of::<dtTileCacheLayerHeader>() - 4usize];
+        ["Offset of field: dtTileCacheLayerHeader::magic"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, magic) - 0usize];
+        ["Offset of field: dtTileCacheLayerHeader::version"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, version) - 4usize];
+        ["Offset of field: dtTileCacheLayerHeader::tx"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, tx) - 8usize];
+        ["Offset of field: dtTileCacheLayerHeader::ty"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, ty) - 12usize];
+        ["Offset of field: dtTileCacheLayerHeader::tlayer"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, tlayer) - 16usize];
+        ["Offset of field: dtTileCacheLayerHeader::bmin"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, bmin) - 20usize];
+        ["Offset of field: dtTileCacheLayerHeader::bmax"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, bmax) - 32usize];
+        ["Offset of field: dtTileCacheLayerHeader::hmin"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, hmin) - 44usize];
+        ["Offset of field: dtTileCacheLayerHeader::hmax"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, hmax) - 46usize];
+        ["Offset of field: dtTileCacheLayerHeader::width"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, width) - 48usize];
+        ["Offset of field: dtTileCacheLayerHeader::height"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, height) - 49usize];
+        ["Offset of field: dtTileCacheLayerHeader::minx"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, minx) - 50usize];
+        ["Offset of field: dtTileCacheLayerHeader::maxx"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, maxx) - 51usize];
+        ["Offset of field: dtTileCacheLayerHeader::miny"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, miny) - 52usize];
+        ["Offset of field: dtTileCacheLayerHeader::maxy"]
+            [::std::mem::offset_of!(dtTileCacheLayerHeader, maxy) - 53usize];
+    };
+    #[repr(C)]
+    #[derive(Debug, Copy, Clone)]
+    pub struct dtTileCacheLayer {
+        pub header: *mut root::dtTileCacheLayerHeader,
+        #[doc = "< Region count."]
+        pub regCount: ::std::os::raw::c_uchar,
+        pub heights: *mut ::std::os::raw::c_uchar,
+        pub areas: *mut ::std::os::raw::c_uchar,
+        pub cons: *mut ::std::os::raw::c_uchar,
+        pub regs: *mut ::std::os::raw::c_uchar,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of dtTileCacheLayer"][::std::mem::size_of::<dtTileCacheLayer>() - 48usize];
+        ["Alignment of dtTileCacheLayer"][::std::mem::align_of::<dtTileCacheLayer>() - 8usize];
+        ["Offset of field: dtTileCacheLayer::header"]
+            [::std::mem::offset_of!(dtTileCacheLayer, header) - 0usize];
+        ["Offset of field: dtTileCacheLayer::regCount"]
+            [::std::mem::offset_of!(dtTileCacheLayer, regCount) - 8usize];
+        ["Offset of field: dtTileCacheLayer::heights"]
+            [::std::mem::offset_of!(dtTileCacheLayer, heights) - 16usize];
+        ["Offset of field: dtTileCacheLayer::areas"]
+            [::std::mem::offset_of!(dtTileCacheLayer, areas) - 24usize];
+        ["Offset of field: dtTileCacheLayer::cons"]
+            [::std::mem::offset_of!(dtTileCacheLayer, cons) - 32usize];
+        ["Offset of field: dtTileCacheLayer::regs"]
+            [::std::mem::offset_of!(dtTileCacheLayer, regs) - 40usize];
+    };
+    #[repr(C)]
+    #[derive(Debug, Copy, Clone)]
+    pub struct dtTileCacheContour {
+        pub nverts: ::std::os::raw::c_int,
+        pub verts: *mut ::std::os::raw::c_uchar,
+        pub reg: ::std::os::raw::c_uchar,
+        pub area: ::std::os::raw::c_uchar,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of dtTileCacheContour"][::std::mem::size_of::<dtTileCacheContour>() - 24usize];
+        ["Alignment of dtTileCacheContour"][::std::mem::align_of::<dtTileCacheContour>() - 8usize];
+        ["Offset of field: dtTileCacheContour::nverts"]
+            [::std::mem::offset_of!(dtTileCacheContour, nverts) - 0usize];
+        ["Offset of field: dtTileCacheContour::verts"]
+            [::std::mem::offset_of!(dtTileCacheContour, verts) - 8usize];
+        ["Offset of field: dtTileCacheContour::reg"]
+            [::std::mem::offset_of!(dtTileCacheContour, reg) - 16usize];
+        ["Offset of field: dtTileCacheContour::area"]
+            [::std::mem::offset_of!(dtTileCacheContour, area) - 17usize];
+    };
+    #[repr(C)]
+    #[derive(Debug, Copy, Clone)]
+    pub struct dtTileCacheContourSet {
+        pub nconts: ::std::os::raw::c_int,
+        pub conts: *mut root::dtTileCacheContour,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of dtTileCacheContourSet"][::std::mem::size_of::<dtTileCacheContourSet>() - 16usize];
+        ["Alignment of dtTileCacheContourSet"]
+            [::std::mem::align_of::<dtTileCacheContourSet>() - 8usize];
+        ["Offset of field: dtTileCacheContourSet::nconts"]
+            [::std::mem::offset_of!(dtTileCacheContourSet, nconts) - 0usize];
+        ["Offset of field: dtTileCacheContourSet::conts"]
+            [::std::mem::offset_of!(dtTileCacheContourSet, conts) - 8usize];
+    };
+    #[repr(C)]
+    #[derive(Debug, Copy, Clone)]
+    pub struct dtTileCachePolyMesh {
+        pub nvp: ::std::os::raw::c_int,
+        #[doc = "< Number of vertices."]
+        pub nverts: ::std::os::raw::c_int,
+        #[doc = "< Number of polygons."]
+        pub npolys: ::std::os::raw::c_int,
+        #[doc = "< Vertices of the mesh, 3 elements per vertex."]
+        pub verts: *mut ::std::os::raw::c_ushort,
+        #[doc = "< Polygons of the mesh, nvp*2 elements per polygon."]
+        pub polys: *mut ::std::os::raw::c_ushort,
+        #[doc = "< Per polygon flags."]
+        pub flags: *mut ::std::os::raw::c_ushort,
+        #[doc = "< Area ID of polygons."]
+        pub areas: *mut ::std::os::raw::c_uchar,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of dtTileCachePolyMesh"][::std::mem::size_of::<dtTileCachePolyMesh>() - 48usize];
+        ["Alignment of dtTileCachePolyMesh"]
+            [::std::mem::align_of::<dtTileCachePolyMesh>() - 8usize];
+        ["Offset of field: dtTileCachePolyMesh::nvp"]
+            [::std::mem::offset_of!(dtTileCachePolyMesh, nvp) - 0usize];
+        ["Offset of field: dtTileCachePolyMesh::nverts"]
+            [::std::mem::offset_of!(dtTileCachePolyMesh, nverts) - 4usize];
+        ["Offset of field: dtTileCachePolyMesh::npolys"]
+            [::std::mem::offset_of!(dtTileCachePolyMesh, npolys) - 8usize];
+        ["Offset of field: dtTileCachePolyMesh::verts"]
+            [::std::mem::offset_of!(dtTileCachePolyMesh, verts) - 16usize];
+        ["Offset of field: dtTileCachePolyMesh::polys"]
+            [::std::mem::offset_of!(dtTileCachePolyMesh, polys) - 24usize];
+        ["Offset of field: dtTileCachePolyMesh::flags"]
+            [::std::mem::offset_of!(dtTileCachePolyMesh, flags) - 32usize];
+        ["Offset of field: dtTileCachePolyMesh::areas"]
+            [::std::mem::offset_of!(dtTileCachePolyMesh, areas) - 40usize];
+    };
+    #[repr(C)]
+    pub struct dtTileCacheAlloc__bindgen_vtable(::std::os::raw::c_void);
+    #[repr(C)]
+    #[derive(Debug)]
+    pub struct dtTileCacheAlloc {
+        pub vtable_: *const dtTileCacheAlloc__bindgen_vtable,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of dtTileCacheAlloc"][::std::mem::size_of::<dtTileCacheAlloc>() - 8usize];
+        ["Alignment of dtTileCacheAlloc"][::std::mem::align_of::<dtTileCacheAlloc>() - 8usize];
+    };
+    unsafe extern "C" {
+        #[link_name = "\u{1}??1dtTileCacheAlloc@@UEAA@XZ"]
+        pub fn dtTileCacheAlloc_dtTileCacheAlloc_destructor(this: *mut root::dtTileCacheAlloc);
+    }
+    #[repr(C)]
+    pub struct dtTileCacheCompressor__bindgen_vtable(::std::os::raw::c_void);
+    #[repr(C)]
+    #[derive(Debug)]
+    pub struct dtTileCacheCompressor {
+        pub vtable_: *const dtTileCacheCompressor__bindgen_vtable,
+    }
+    #[allow(clippy::unnecessary_operation, clippy::identity_op)]
+    const _: () = {
+        ["Size of dtTileCacheCompressor"][::std::mem::size_of::<dtTileCacheCompressor>() - 8usize];
+        ["Alignment of dtTileCacheCompressor"]
+            [::std::mem::align_of::<dtTileCacheCompressor>() - 8usize];
+    };
+    unsafe extern "C" {
+        #[link_name = "\u{1}??1dtTileCacheCompressor@@UEAA@XZ"]
+        pub fn dtTileCacheCompressor_dtTileCacheCompressor_destructor(
+            this: *mut root::dtTileCacheCompressor,
+        );
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtBuildTileCacheLayer@@YAIPEAUdtTileCacheCompressor@@PEAUdtTileCacheLayerHeader@@PEBE22PEAPEAEPEAH@Z"]
+        pub fn dtBuildTileCacheLayer(
+            comp: *mut root::dtTileCacheCompressor,
+            header: *mut root::dtTileCacheLayerHeader,
+            heights: *const ::std::os::raw::c_uchar,
+            areas: *const ::std::os::raw::c_uchar,
+            cons: *const ::std::os::raw::c_uchar,
+            outData: *mut *mut ::std::os::raw::c_uchar,
+            outDataSize: *mut ::std::os::raw::c_int,
+        ) -> root::dtStatus;
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtFreeTileCacheLayer@@YAXPEAUdtTileCacheAlloc@@PEAUdtTileCacheLayer@@@Z"]
+        pub fn dtFreeTileCacheLayer(
+            alloc: *mut root::dtTileCacheAlloc,
+            layer: *mut root::dtTileCacheLayer,
+        );
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtDecompressTileCacheLayer@@YAIPEAUdtTileCacheAlloc@@PEAUdtTileCacheCompressor@@PEAEHPEAPEAUdtTileCacheLayer@@@Z"]
+        pub fn dtDecompressTileCacheLayer(
+            alloc: *mut root::dtTileCacheAlloc,
+            comp: *mut root::dtTileCacheCompressor,
+            compressed: *mut ::std::os::raw::c_uchar,
+            compressedSize: ::std::os::raw::c_int,
+            layerOut: *mut *mut root::dtTileCacheLayer,
+        ) -> root::dtStatus;
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtAllocTileCacheContourSet@@YAPEAUdtTileCacheContourSet@@PEAUdtTileCacheAlloc@@@Z"]
+        pub fn dtAllocTileCacheContourSet(
+            alloc: *mut root::dtTileCacheAlloc,
+        ) -> *mut root::dtTileCacheContourSet;
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtFreeTileCacheContourSet@@YAXPEAUdtTileCacheAlloc@@PEAUdtTileCacheContourSet@@@Z"]
+        pub fn dtFreeTileCacheContourSet(
+            alloc: *mut root::dtTileCacheAlloc,
+            cset: *mut root::dtTileCacheContourSet,
+        );
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtAllocTileCachePolyMesh@@YAPEAUdtTileCachePolyMesh@@PEAUdtTileCacheAlloc@@@Z"]
+        pub fn dtAllocTileCachePolyMesh(
+            alloc: *mut root::dtTileCacheAlloc,
+        ) -> *mut root::dtTileCachePolyMesh;
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtFreeTileCachePolyMesh@@YAXPEAUdtTileCacheAlloc@@PEAUdtTileCachePolyMesh@@@Z"]
+        pub fn dtFreeTileCachePolyMesh(
+            alloc: *mut root::dtTileCacheAlloc,
+            lmesh: *mut root::dtTileCachePolyMesh,
+        );
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtMarkCylinderArea@@YAIAEAUdtTileCacheLayer@@PEBMMM1MME@Z"]
+        pub fn dtMarkCylinderArea(
+            layer: *mut root::dtTileCacheLayer,
+            orig: *const f32,
+            cs: f32,
+            ch: f32,
+            pos: *const f32,
+            radius: f32,
+            height: f32,
+            areaId: ::std::os::raw::c_uchar,
+        ) -> root::dtStatus;
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtMarkBoxArea@@YAIAEAUdtTileCacheLayer@@PEBMMM11E@Z"]
+        pub fn dtMarkBoxArea(
+            layer: *mut root::dtTileCacheLayer,
+            orig: *const f32,
+            cs: f32,
+            ch: f32,
+            bmin: *const f32,
+            bmax: *const f32,
+            areaId: ::std::os::raw::c_uchar,
+        ) -> root::dtStatus;
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtMarkBoxArea@@YAIAEAUdtTileCacheLayer@@PEBMMM111E@Z"]
+        pub fn dtMarkBoxArea1(
+            layer: *mut root::dtTileCacheLayer,
+            orig: *const f32,
+            cs: f32,
+            ch: f32,
+            center: *const f32,
+            halfExtents: *const f32,
+            rotAux: *const f32,
+            areaId: ::std::os::raw::c_uchar,
+        ) -> root::dtStatus;
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtBuildTileCacheRegions@@YAIPEAUdtTileCacheAlloc@@AEAUdtTileCacheLayer@@H@Z"]
+        pub fn dtBuildTileCacheRegions(
+            alloc: *mut root::dtTileCacheAlloc,
+            layer: *mut root::dtTileCacheLayer,
+            walkableClimb: ::std::os::raw::c_int,
+        ) -> root::dtStatus;
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtBuildTileCacheContours@@YAIPEAUdtTileCacheAlloc@@AEAUdtTileCacheLayer@@HMAEAUdtTileCacheContourSet@@@Z"]
+        pub fn dtBuildTileCacheContours(
+            alloc: *mut root::dtTileCacheAlloc,
+            layer: *mut root::dtTileCacheLayer,
+            walkableClimb: ::std::os::raw::c_int,
+            maxError: f32,
+            lcset: *mut root::dtTileCacheContourSet,
+        ) -> root::dtStatus;
+    }
+    unsafe extern "C" {
+        #[link_name = "\u{1}?dtBuildTileCachePolyMesh@@YAIPEAUdtTileCacheAlloc@@AEAUdtTileCacheContourSet@@AEAUdtTileCachePolyMesh@@@Z"]
+        pub fn dtBuildTileCachePolyMesh(
+            alloc: *mut root::dtTileCacheAlloc,
+            lcset: *mut root::dtTileCacheContourSet,
+            mesh: *mut root::dtTileCachePolyMesh,
+        ) -> root::dtStatus;
+    }
+    unsafe extern "C" {
+        #[doc = " Swaps the endianness of the compressed tile data's header (#dtTileCacheLayerHeader).\n Tile layer data does not need endian swapping as it consist only of bytes.\n  @param[in,out]\tdata\t\tThe tile data array.\n  @param[in]\t\tdataSize\tThe size of the data array."]
+        #[link_name = "\u{1}?dtTileCacheHeaderSwapEndian@@YA_NPEAEH@Z"]
+        pub fn dtTileCacheHeaderSwapEndian(
+            data: *mut ::std::os::raw::c_uchar,
+            dataSize: ::std::os::raw::c_int,
+        ) -> bool;
+    }
     #[repr(C)]
     #[derive(Debug, Copy, Clone)]
     pub struct rcChunkyTriMeshNode {
@@ -4593,21 +4929,6 @@ pub mod root {
     #[repr(C)]
     #[derive(Debug, Copy, Clone)]
     pub struct dtNodeQueue {
-        pub _address: u8,
-    }
-    #[repr(C)]
-    #[derive(Debug, Copy, Clone)]
-    pub struct dtTileCacheLayerHeader {
-        pub _address: u8,
-    }
-    #[repr(C)]
-    #[derive(Debug, Copy, Clone)]
-    pub struct dtTileCacheAlloc {
-        pub _address: u8,
-    }
-    #[repr(C)]
-    #[derive(Debug, Copy, Clone)]
-    pub struct dtTileCacheCompressor {
         pub _address: u8,
     }
 }

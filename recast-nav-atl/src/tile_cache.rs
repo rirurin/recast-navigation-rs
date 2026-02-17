@@ -260,6 +260,15 @@ where A: TileCacheAllocator,
         }
     }
 
+    /// `dtTileCache::getTile`
+    pub fn get_tile_mut(&mut self, index: usize) -> Option<&mut dtCompressedTile> { 
+        if index < self.get_tile_len() {
+            Some(unsafe { &mut *self.data.m_tiles.add(index) })
+        } else {
+            None
+        }
+    }
+
     /// `dtTileCache::getObstacleCount`
     pub fn get_obstacle_len(&self) -> usize { self.get_params().maxObstacles as usize }
 

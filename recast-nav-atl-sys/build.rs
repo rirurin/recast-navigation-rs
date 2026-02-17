@@ -27,6 +27,7 @@ fn main() {
             native_dir.join("Detour").join("Include").join("DetourNavMeshBuilder.h").to_str().unwrap(),
             native_dir.join("DetourCrowd").join("Include").join("DetourCrowd.h").to_str().unwrap(),
             native_dir.join("DetourTileCache").join("Include").join("DetourTileCache.h").to_str().unwrap(),
+            native_dir.join("DetourTileCache").join("Include").join("DetourTileCacheBuilder.h").to_str().unwrap(),
             native_dir.join("RecastDemo").join("Include").join("ChunkyTriMesh.h").to_str().unwrap(),
         ])
         
